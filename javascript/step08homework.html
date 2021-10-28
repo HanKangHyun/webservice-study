@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+
+        /*
+            로또복권 
+            1. 1-45까지의 임의 숫자 6개를 출력
+            2. Math.random() -> 0이상 1미만의 부동소수점 반환
+            3. Math.random() * 45 => 0 ~ 44.99999999
+            4. Math.floor(Math.random() * 45) -> 0 ~ 44
+            5. Math.floor(Math.random() * 45) +1 -> 1 ~ 45
+        */
+
+        
+        for (let j=0;j<count;j++){
+        const lottos = [];
+        while(true){
+            if(lottos.length == 6) break;
+            let number = Math.floor(Math.random() * 45) + 1;
+            
+            /* 처음엔 그냥 뽑아도되고
+            여기에 중복안되게끔하는 코드가 필요.
+            (뽑은숫자를 배열에 있는숫자랑 비교해서 중복되면 다시뽑고 중복안되면 푸시)
+            lottos 배열에 있는 값과 number 비교해서 동일한 값이 있으면 새로 number값을 구하고
+            동일하지 않으면 배열에 number값을 넣어준다.
+            */
+
+
+            let isExisted = false;
+
+            for(let i=0;i<lottos.length;i++){
+                if(lottos[i]==number){
+                    isExisted = true;
+                    break;
+                }
+
+            }
+
+            if(!isExisted){
+                lottos.push(number);
+            }
+        }
+        
+        console.log(lottos.join(","));
+
+    }
+
+
+    </script>
+    <title>Array</title>
+</head>
+<body>
+    
+</body>
+</html>
